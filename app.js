@@ -24,3 +24,36 @@ connection.connect(function (err) {
     srcByRole();
     initApplication();
 });
+
+const initApplication = () => {
+    inquirer.prompt([
+        {
+            message: "What would you like to do?",
+            type: "list",
+            choices: ["View All Employees", "View All Employees By Department", "Add Employee", "Update Employee Role"],
+            name: "initApplication"
+        }
+    ]).then(({ initApplication }) => {
+        switch (initApplication) {
+            case "View All Employees":
+                viewAll();
+                break;
+            case "View All Employees By Department":
+                viewAllByDepartment();
+                break;
+            case "Add Employee":
+                addEmployee();
+                break;
+            case "Update Employee Role":
+                updateRole();
+                break;
+        }
+    });
+};
+
+const srcByRole = () => {
+    let query = "SELECT id, title FROM role";
+    connection.query(query, function (err, res) {
+        roles = res;
+    });
+};
