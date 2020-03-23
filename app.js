@@ -11,7 +11,7 @@ let managers;
 //Create Connection
 const connection = mysql.createConnection({
     host: "localhost",
-    port: 3306,
+    port: 3000,
     user: "root",
     password: "Tucansam1!",
     database: "trackerDB"
@@ -24,6 +24,7 @@ connection.connect(function (err) {
     srcByRole();
     initApplication();
 });
+
 
 const initApplication = () => {
     inquirer.prompt([
@@ -58,6 +59,8 @@ const srcByRole = () => {
     });
 };
 
+
+//View all Employees
 const viewAll = () => {
     let query = 'SELECT e.id, e.first_name, e.last_name, d.name AS department, r.title, r.salary, CONCAT_WS(" ", m.first_name, m.last_name) AS manager FROM employee e LEFT JOIN employee m ON m.id = e.manager_id INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id ORDER BY e.id ASC';
 
@@ -99,7 +102,7 @@ const viewAllByDepartment = () => {
     });
 };
 
-
+//Add an Employee
 const addEmployee = () => {
     let query = "SELECT id, first_name, last_name, CONCAT_WS(' ', first_name, last_name) AS managers FROM employee";
     connection.query(query, function (err, res) {
@@ -174,7 +177,6 @@ const updateRole = () => {
         updateRolePrompts(roles, employee);
     });
 };
-
 
 
 const updateRolePrompts = (roles, employee) => {
