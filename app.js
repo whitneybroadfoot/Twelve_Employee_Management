@@ -57,3 +57,44 @@ const srcByRole = () => {
         roles = res;
     });
 };
+
+const viewAll = () => {
+    let query = 'SELECT e.id, e.first_name, e.last_name, d.name AS department, r.title, r.salary, CONCAT_WS(" ", m.first_name, m.last_name) AS manager FROM employee e LEFT JOIN employee m ON m.id = e.manager_id INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id ORDER BY e.id ASC';
+
+    connection.query(query, function (err, res) {
+        let table = [];
+        for (var i = 0; i < res.length; i++) {
+            table.push({ id: res[i].id, name: res[i].first_name + " " + res[i].last_name, title: res[i].title, salary: res[i].salary, department: res[i].department, manager: res[i].manager });
+        };
+
+        let tableGray = consoleTable.getTable(table);
+        console.log(tableGray.gray);
+
+        initApplication();
+    });
+};
+
+//View All Employees By Department
+const viewAllByDepartment = () => {
+    inquirer.prompt([
+        {
+            message: "Which department would you like to view the employees from?",
+            choices: ["Care", "Managment", "Product", "People"],
+            name: "department",
+            type: "list"
+        }
+    ]).then((answer) => {
+        let query = "SELECT e.first_name, e.last_name, r.title, d.name FROM employee e INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id WHERE d.name = ?";
+        connection.query(query, [answer.department], function (err, res) {
+            let table = [];
+            for (var i = 0; i < res.length; i++) {
+                table.push({ name: res[i].first_name + " " + res[i].last_name, title: res[i].title, department: res[i].name });
+            };
+
+            let tableGray = consoleTable.getTable(table);
+            console.log(tableGray.gray);
+
+            initApplication();
+        });
+    });
+};
