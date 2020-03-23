@@ -174,3 +174,58 @@ const updateRole = () => {
         updateRolePrompts(roles, employee);
     });
 };
+
+
+
+const updateRolePrompts = (roles, employee) => {
+    // 
+    let listOfEmployees = [];
+    let listOfRoles = [];
+
+    for (i = 0; i < employee.length; i++) {
+        listOfEmployees.push(Object.values(employee[i].employees).join(""));
+    };
+
+    for (i = 0; i < roles.length; i++) {
+        listOfRoles.push(Object.values(roles[i].title).join(""));
+    };
+
+    inquirer.prompt([
+        {
+            message: "Select employee for role update:",
+            name: "employee",
+            type: "list",
+            choices: listOfEmployees
+        },
+        {
+            message: "What is the employee's CURRENT role?",
+            name: "title",
+            type: "list",
+            choices: listOfRoles
+        }
+    ]).then((answers) => {
+
+        let employee_id;
+        let role_id;
+
+        // Search by Employee Name
+        for (i = 0; i < employee.length; i++) {
+            if (employee[i].employees === answers.employee) {
+                employee_id = employee[i].id;
+            };
+        };
+        // Search by Employee Role
+        for (i = 0; i < roles.length; i++) {
+            if (roles[i].title === answers.title) {
+                role_id = roles[i].id;
+            };
+        };
+
+        let query = ("UPDATE employee SET ? WHERE ?");
+
+        connection.query(query, [{ role_id: role_id }, { id: employee_id }], function (err, res) {
+            if (err) throw err;
+            initApplication();
+        });
+    });
+};
