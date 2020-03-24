@@ -169,7 +169,7 @@ const addNewEmployee = (roles, managers) => {
     });
 };
 
-//Update an Employee's Role
+//employee role cange, updating: 
 const updateRole = () => {
     let query = "SELECT id, first_name, last_name, CONCAT_WS(' ', first_name, last_name) AS employees FROM employee";
     connection.query(query, function (err, res) {
@@ -194,13 +194,13 @@ const updateRolePrompts = (roles, employee) => {
 
     inquirer.prompt([
         {
-            message: "Select employee for role update:",
+            message: "Please select the employee for role update:",
             name: "employee",
             type: "list",
             choices: listOfEmployees
         },
         {
-            message: "What is the employee's CURRENT role?",
+            message: "What is the employee's current role?",
             name: "title",
             type: "list",
             choices: listOfRoles
@@ -210,13 +210,13 @@ const updateRolePrompts = (roles, employee) => {
         let employee_id;
         let role_id;
 
-        // Search by Employee Name
+        // Search by Name
         for (i = 0; i < employee.length; i++) {
             if (employee[i].employees === answers.employee) {
                 employee_id = employee[i].id;
             };
         };
-        // Search by Employee Role
+        // Search by Role
         for (i = 0; i < roles.length; i++) {
             if (roles[i].title === answers.title) {
                 role_id = roles[i].id;
