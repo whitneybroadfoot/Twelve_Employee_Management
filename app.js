@@ -102,7 +102,7 @@ const viewAllByDepartment = () => {
     });
 };
 
-//Add an Employee
+//code below for add employee
 const addEmployee = () => {
     let query = "SELECT id, first_name, last_name, CONCAT_WS(' ', first_name, last_name) AS managers FROM employee";
     connection.query(query, function (err, res) {
@@ -110,7 +110,7 @@ const addEmployee = () => {
         addNewEmployee(roles, managers);
     });
 };
-//prompts to add a new employee to the SQL db
+//adding a new employee prompts
 const addNewEmployee = (roles, managers) => {
 
     let roleOptions = [];
@@ -122,26 +122,26 @@ const addNewEmployee = (roles, managers) => {
     for (i = 0; i < managers.length; i++) {
         managerOptions.push(Object.values(managers[i].managers).join(""));
     };
-    //prompts to the User
+//user prompts
     inquirer.prompt([
         {
-            message: "Enter first name of employee:",
+            message: "Please enter first name of employee:",
             name: "first_name",
             type: "input"
         },
         {
-            message: "Enter last name of employee:",
+            message: "Please enter last name of employee:",
             name: "last_name",
             type: "input"
         },
         {
-            message: "Enter employee's role:",
+            message: "What is the employee's role:",
             name: "role_id",
             choices: roleOptions,
             type: "list"
         },
         {
-            message: "Who is the employee's manager?",
+            message: "Who is the employee's manager:",
             name: "manager_id",
             choices: managerOptions,
             type: "list"
