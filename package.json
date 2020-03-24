@@ -1,8 +1,8 @@
 {
-    "name": "Employee Database",
-    "version": "0.0.1",
-    "author": "WBroadfoot",
-    "dependencies": {
-      "mysql": "2.x.x"
-    }
+  "name": "trackerDB",
+  "version": "0.0.1",
+  "author": "WBroadfoot",
+  "dependencies": {
+    "mysql": "2.x.x"
   }
+}
