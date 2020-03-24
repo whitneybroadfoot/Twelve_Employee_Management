@@ -29,7 +29,7 @@ connection.connect(function (err) {
 const initApplication = () => {
     inquirer.prompt([
         {
-            message: "What would you like to do?",
+            message: "Please select an option:",
             type: "list",
             choices: ["View All Employees", "View All Employees By Department", "Add Employee", "Update Employee Role"],
             name: "initApplication"
@@ -60,7 +60,7 @@ const srcByRole = () => {
 };
 
 
-//View all Employees
+//code for viewing all employees
 const viewAll = () => {
     let query = 'SELECT e.id, e.first_name, e.last_name, d.name AS department, r.title, r.salary, CONCAT_WS(" ", m.first_name, m.last_name) AS manager FROM employee e LEFT JOIN employee m ON m.id = e.manager_id INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id ORDER BY e.id ASC';
 
@@ -77,12 +77,12 @@ const viewAll = () => {
     });
 };
 
-//View All Employees By Department
+//code for viewing by department
 const viewAllByDepartment = () => {
     inquirer.prompt([
         {
-            message: "Which department would you like to view the employees from?",
-            choices: ["Care", "Managment", "Product", "People"],
+            message: "Please choose a department to view employees:",
+            choices: ["Finance", "Customer Service", "Management", "Administrative"],
             name: "department",
             type: "list"
         }
