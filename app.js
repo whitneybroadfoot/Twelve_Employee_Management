@@ -1,9 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
-const colors = require("colors");
-colors.enable();
-
 
 let roles;
 let managers;
