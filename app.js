@@ -79,7 +79,7 @@ const viewAllByDepartment = () => {
     inquirer.prompt([
         {
             message: "Please choose a department to view employees:",
-            choices: ["Finance", "Customer Service", "Management", "Administrative"],
+            choices: ["Customer Service", "Accounting", "Management", "Developer"],
             name: "department",
             type: "list"
         }
