@@ -2,9 +2,6 @@ const mysql = require("mysql");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
 
-let roles;
-let managers;
-
 //Create Connection
 const connection = mysql.createConnection({
     host: "localhost",
