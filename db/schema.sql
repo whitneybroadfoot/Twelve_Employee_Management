@@ -68,8 +68,6 @@ DELETE FROM employee WHERE id = 5;
 
 INSERT INTO  employee
 	(first_name, last_name, role_id, manager_id)
-VALUES
-	("Test", "Case", 5, 5);
 
 SELECT e.first_name, e.last_name, r.title, d.name
 	FROM employee e INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id

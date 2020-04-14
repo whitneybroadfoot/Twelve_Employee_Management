@@ -8,6 +8,8 @@ Developers are often tasked with creating interfaces that make it easy for non-d
 
 This application is a solution for managing a company's employees using node, inquirer, and MySQL.
 
+* Application was not working remotely, but GIF demonstration included* 
+
 # department:
 id - INT PRIMARY KEY
 name - VARCHAR(30) to hold department name

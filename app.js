@@ -19,12 +19,11 @@ connection.connect(function (err) {
     initApplication();
 });
 
-
 const initApplication = () => {
     inquirer.prompt([
         {
             message: "Please select an option:",
-            type: "list",
+            type: "checkbox",
             choices: ["View All Employees", "View All Employees By Department", "Add Employee", "Update Employee Role"],
             name: "initApplication"
         }
@@ -65,7 +64,7 @@ const viewAll = () => {
         };
 
         let tableGray = consoleTable.getTable(table);
-        console.log(tableGray.gray);
+        console.log(table);
 
         initApplication();
     });
@@ -89,7 +88,7 @@ const viewAllByDepartment = () => {
             };
 
             let tableGray = consoleTable.getTable(table);
-            console.log(tableGray.gray);
+            console.log(table);
 
             initApplication();
         });
