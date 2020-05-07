@@ -3,10 +3,15 @@
 # Help Track Employment
 
 Developers are often tasked with creating interfaces that make it easy for non-developers to view and interact with information stored in databases. Often these interfaces are known as Content Management Systems. 
-
 This application is a solution for managing a company's employees using node, inquirer, and MySQL.
 
 *Application was not working remotely, but GIF demonstration included* 
+
+# Command-line Application:
+* At a minimum allows the user to:
+Add departments, roles, employees
+View departments, roles, employees
+Update employee roles
 
 # Department:
 id - INT PRIMARY KEY
@@ -24,11 +29,6 @@ first_name - VARCHAR(30) to hold employee first name
 last_name - VARCHAR(30) to hold employee last name
 role_id - INT to hold reference to role employee has
 manager_id - INT to hold reference to another employee that manager of the current employee. This field may be null if the employee has no manager
-
-# Build a command-line application that at a minimum allows the user to:
-Add departments, roles, employees
-View departments, roles, employees
-Update employee roles
 
 # BSD 2-Clause License
 Copyright (c) 2020, Whitney Broadfoot All rights reserved.
