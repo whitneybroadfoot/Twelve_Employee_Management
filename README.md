@@ -5,7 +5,7 @@
 Developers are often tasked with creating interfaces that make it easy for non-developers to view and interact with information stored in databases. Often these interfaces are known as Content Management Systems. 
 This application is a solution for managing a company's employees using node, inquirer, and MySQL.
 
-*Application was not working remotely, but GIF demonstration included* 
+*Application was not working remotely, but GIF demonstration included within assets folder* 
 
 # Command-line Application:
 * At a minimum allows the user to:
