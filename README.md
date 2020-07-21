@@ -11,7 +11,7 @@ This application is a solution for managing a company's employees using node, in
 * At a minimum allows the user to:
 Add departments, roles, employees
 View departments, roles, employees
-Update employee roles
+Update employee roles to stay current
 
 # Department:
 id - INT PRIMARY KEY
